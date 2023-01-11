@@ -11,6 +11,7 @@ let option3 = document.querySelector(".op3");
 let option4 = document.querySelector(".op4");
 let answer = document.querySelector(".answer");
 let score = 0;
+let wrong = 0;
 
 add.addEventListener("click", update);
 
@@ -23,6 +24,7 @@ clear.addEventListener("click", () => {
   });
   console.log("clear click");
   score = 0;
+  wrong = 0;
 });
 
 function update() {
@@ -112,13 +114,9 @@ let sw = document.querySelector(".show");
 let questionBox = document.getElementById("questionBox");
 let allInputs = document.querySelectorAll("input[type='radio']");
 
-
-
 sw.addEventListener("click", show);
 
 function show() {
-
-  
   submit.addEventListener("click", checkAns);
 
   let qson = localStorage.getItem("que");
@@ -148,6 +146,7 @@ function show() {
     if (ind > que.length) {
       ind = que.length;
     }
+    // console.log(`index = ${ind}`);
     changeQuestion(ind);
     chengeOption(ind);
   });
@@ -164,43 +163,31 @@ function show() {
     }
   }
 
-
-
-  function checkAns()
-  {
-    
+  function checkAns() {
     let select = getAns();
-  // console.log(select);
+    // console.log(select);
+    console.log(`select = ${select}`);
 
+    let an = localStorage.getItem("answer");
+    let ans;
 
-  let an = localStorage.getItem("answer");
-  let ans;
+    if (an === null) {
+      ans = [];
+    } else {
+      ans = JSON.parse(an);
+    }
+    console.log(`answer = ${ans[ind]}`);
+    if (select === ans[ind]) {
+      console.log("Your answer is correct");
+      score++;
+    } else {
+      console.log("You give a wrong answer");
+      wrong++;
+    }
 
-  if (an === null) {
-    ans = [];
-  } else {
-    ans = JSON.parse(an);
+    console.log(`cprrect ans = ${score}`);
+    console.log(`wrong ans = ${wrong}`);
   }
-// console.log(`answer = ${ans[ind]}`)
-  if(select === ans[ind])
-  {
-    console.log("Ypur answer is correct");
-    score++;
-  }
-  else{
-    console.log("You give a wrong answer");
-  }
-
-  console.log(`Your score = ${score}`);
-
-
-  }
-
-  
-
-
-
-
 }
 
 // playing part ends
@@ -212,7 +199,6 @@ function getAns() {
     if (ele.checked) {
       ans = ele.value;
     }
-    
   });
   return ans;
-};
+}
