@@ -1,32 +1,32 @@
-
-
 // question adding part starts
 
 let question = document.getElementById("question");
 let add = document.querySelector(".add");
 let clear = document.querySelector(".clear");
 
-
 let option = document.querySelectorAll(".option");
 let option1 = document.querySelector(".op1");
 let option2 = document.querySelector(".op2");
 let option3 = document.querySelector(".op3");
 let option4 = document.querySelector(".op4");
+let answer = document.querySelector(".answer");
 
-add.addEventListener("click", () => {
-  update();
-});
+add.addEventListener("click", update);
 
 clear.addEventListener("click", () => {
   localStorage.clear();
+  question.value = "";
+  answer.value = "";
+  option.forEach((ele) => {
+    ele.value = "";
+  });
   console.log("clear click");
 });
-
-
 
 function update() {
   questionf();
   optionf();
+  answerf();
 }
 
 // function for question
@@ -41,7 +41,6 @@ function questionf() {
   }
 
   let inpdata = question.value;
-
   if (inpdata.trim() != 0) {
     que.push(inpdata);
   } else {
@@ -49,7 +48,6 @@ function questionf() {
   }
 
   localStorage.setItem("que", JSON.stringify(que));
-
   question.value = "";
 }
 
@@ -82,31 +80,43 @@ function optionf() {
   });
 }
 
+// function for answer
+function answerf() {
+  let an = localStorage.getItem("answer");
+  let ans;
 
+  if (an === null) {
+    ans = [];
+  } else {
+    ans = JSON.parse(an);
+  }
 
-// question adding part ends 
+  let inpAns = answer.value;
 
-// playing part starts 
+  ans.push(inpAns);
+
+  localStorage.setItem("answer", JSON.stringify(ans));
+
+  answer.value = "";
+}
+
+// question adding part ends
+
+// playing part starts
 
 let submit = document.getElementById("submit");
 let next = document.getElementById("next");
 let sw = document.querySelector(".show");
 let questionBox = document.getElementById("questionBox");
-let allInputs = document.querySelectorAll("input[type='radio']")
+let allInputs = document.querySelectorAll("input[type='radio']");
 
-
-submit.addEventListener("click",()=>{
+submit.addEventListener("click", () => {
   console.log("submit clicked");
-
 });
-
-// next.addEventListener("click", Click);
 
 sw.addEventListener("click", show);
 
-
 function show() {
-
   let qson = localStorage.getItem("que");
 
   if (qson === null) {
@@ -129,42 +139,26 @@ function show() {
   changeQuestion(ind);
   chengeOption(ind);
 
-  next.addEventListener("click", ()=>{
+  next.addEventListener("click", () => {
     ind++;
-    if(ind > que.length)
-    {
+    if (ind > que.length) {
       ind = que.length;
     }
     changeQuestion(ind);
     chengeOption(ind);
   });
-  
-  function changeQuestion(index)
-  {
+
+  function changeQuestion(index) {
     questionBox.innerHTML = que[index];
-    console.log("count = "+index);
+    console.log("count = " + index);
   }
 
-  function chengeOption(index)
-  {
-    for(let j = (index*4), i = 0; j<((index*4)+4),i<4 ; j++,i++ )
-    {
+  function chengeOption(index) {
+    for (let j = index * 4, i = 0; j < index * 4 + 4, i < 4; j++, i++) {
       console.log(`index j = ${j}`);
       allInputs[i].nextElementSibling.innerText = options[j];
     }
   }
-
 }
 
-
-
-
-// playing part ends 
-
-
-
-
-
-
-
-
+// playing part ends
