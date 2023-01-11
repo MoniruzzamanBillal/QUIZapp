@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  border: 1px solid black;
+  background-color: aquamarine;
+  max-width: 100%;
+  padding: 0;
+}
+
+.addingQuestion {
+  border: 1px solid rgb(0, 174, 255);
+  margin: 0;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 65%;
+  margin: 10px auto;
+  box-shadow: 0px 0px 5px grey;
+  background-color: rgb(230, 221, 221);
+  border-radius: 10px;
+}
+
+.addingQuestion .frm{
+  width: 90%;
+}
+
+.inp{
+  width: 85%;
+  margin: 0px auto;
+}
+
+.Button {
+  text-align: center;
+}
+
+.playingPart {
+  width: 35rem;
+  box-shadow: 0px 0px 5px grey;
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-direction: column;
+  margin: 0px auto;
+  
+}
+
+.col {
+  text-align: justify;
+  padding: 15px;
+  width: 95%;
+}
+
+#next,
+#submit {
+  width: 100%;
+  transition: 0.5s;
+  color: white;
+  outline: none;
+  border: none;
+  font-size: 25px;
+  display: block;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#submit {
+  background-color: rgb(47, 8, 73);
+}
+#next {
+  background-color: rgb(169, 64, 240);
+}
+
+#submit:hover {
+  background-color: rgb(34, 6, 53);
+}
+
+#next:hover {
+  background-color: rgb(42, 98, 9);
+}
+
+.box {
+  box-shadow: 0px -1px 1px grey;
+  width: 100%;
+}
