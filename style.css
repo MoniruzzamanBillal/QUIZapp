@@ -5,9 +5,9 @@
 }
 
 .container {
-  /* border: 1px solid black; */
-  background-color: aquamarine;
+  background-color: rgb(207, 222, 218);
   max-width: 100%;
+  height: 100vh;
   padding: 0;
   display: flex;
   justify-content: center;
@@ -41,7 +41,7 @@
 
 .Button {
   text-align: center;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -77,27 +77,24 @@
   transform: scale(0.98);
 }
 
-.playingContainer{
-  border: 1px solid black;
-  background-color: red;
+.playingContainer {
+  /* border: 1px solid black; */
+  /* background-color: red; */
   width: 90%;
   display: flex;
   justify-content: center;
   /* align-items: center; */
 }
 
-
 .playingPart {
-  border: 1px solid black;
   width: 65%;
   box-shadow: 0px 0px 5px grey;
   display: flex;
-  background-color: white;
+  background-color: rgb(240, 231, 231);
   border-radius: 10px;
   overflow: hidden;
   flex-direction: column;
   margin: 0px auto;
-  border: 1px solid black;
 }
 
 .col {
@@ -106,7 +103,7 @@
   width: 95%;
 }
 
-label{
+label {
   cursor: pointer;
   font-size: 18px;
 }
@@ -136,13 +133,14 @@ label{
 }
 
 #next:hover {
-  background-color: rgb(42, 98, 9);
+  background-color: #892fc5;
 }
 
-.right{
-  border: 1px solid black;
-  background-color: pink;
+.right {
+  background-color: #ae71d7;
+  box-shadow: 0px 0px 5px grey;
   width: 34%;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -151,10 +149,10 @@ label{
   position: relative;
 }
 
-.restart{
+.restart {
   margin: 0;
   position: absolute;
-  top: 80px;
+  top: 60px;
   left: 88px;
   border: none;
   outline: none;
@@ -168,23 +166,22 @@ label{
   border-radius: 8px;
 }
 
-.restart:hover{
+.restart:hover {
   background-color: #170e1d;
   color: white;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
 
-
-.restart:active{
-  transform: scale(.98);
+.restart:active {
+  transform: scale(0.98);
 }
 
-.number{
-  position: relative
+.number {
+  position: relative;
 }
-.number::before{
-  content: '';
+.number::before {
+  content: "";
   position: absolute;
   left: -6px;
   bottom: 41px;
@@ -198,6 +195,6 @@ label{
   width: 100%;
 }
 
-.hide{
+.hide {
   display: none;
 }

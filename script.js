@@ -1,8 +1,14 @@
-
 let addingQuestion = document.querySelector(".addingQuestion");
 let playingContainer = document.querySelector(".playingContainer");
 
-playingContainer.classList.add("hide")
+playingContainer.classList.add("hide");
+
+let restart = document.querySelector(".restart");
+
+let numOfQue = document.querySelector(".qnum");
+let correctAns = document.querySelector(".correct");
+let wrongAns = document.querySelector(".wrong");
+let totalScore = document.querySelector(".total");
 
 // question adding part starts
 
@@ -18,12 +24,14 @@ let option4 = document.querySelector(".op4");
 let answer = document.querySelector(".answer");
 let score = 0;
 let wrong = 0;
+let ind = 0;
 
 add.addEventListener("click", update);
 
 clear.addEventListener("click", () => {
   playingContainer.classList.add("hide");
-  addingQuestion
+  addingQuestion.classList.remove("hide");
+
   localStorage.clear();
   question.value = "";
   answer.value = "";
@@ -76,17 +84,24 @@ function optionf() {
 
   let o = "";
 
-  o = option1.value;
+  // o = option1.value;
+  o = checkInp(option1.value);
   options.push(o);
-  o = option2.value;
+  o = checkInp(option2.value);
   options.push(o);
-  o = option3.value;
+  o = checkInp(option3.value);
   options.push(o);
-  o = option4.value;
+  o = checkInp(option4.value);
   options.push(o);
 
+  function checkInp(val) {
+    if (val.trim() != 0) {
+      return val;
+    } else {
+      alert("enter your option");
+    }
+  }
   localStorage.setItem("opsion", JSON.stringify(options));
-
   option.forEach((ele) => {
     ele.value = "";
   });
@@ -103,15 +118,18 @@ function answerf() {
     ans = JSON.parse(an);
   }
 
-  let inpAns = answer.value;
-
+  let inpAns = checkValidAns(answer.value);
   ans.push(inpAns);
-
+  function checkValidAns(val) {
+    if (val.trim() != 0) {
+      return val;
+    } else {
+      alert("enter your answer");
+    }
+  }
   localStorage.setItem("answer", JSON.stringify(ans));
-
   answer.value = "";
 }
-
 // question adding part ends
 
 // playing part starts
@@ -124,12 +142,21 @@ let allInputs = document.querySelectorAll("input[type='radio']");
 
 start.addEventListener("click", show);
 
-
-
 function show() {
+  addingQuestion.classList.add("hide");
+  playingContainer.classList.remove("hide");
 
-  addingQuestion.classList.add("hide")
-playingContainer.classList.remove("hide");
+  restart.addEventListener("click", () => {
+    ind = 0;
+    score = 0;
+    wrong = 0;
+    correctAns.innerHTML = score;
+    wrongAns.innerHTML = wrong;
+    totalScore.innerHTML = score - wrong;
+    changeQuestion(ind);
+    chengeOption(ind);
+    resetCheck();
+  });
 
   submit.addEventListener("click", checkAns);
 
@@ -150,7 +177,8 @@ playingContainer.classList.remove("hide");
     options = JSON.parse(optn);
   }
 
-  let ind = 0;
+  numOfQue.innerHTML = que.length;
+  // console.log(`Num of question = ${que.length}`);
 
   changeQuestion(ind);
   chengeOption(ind);
@@ -192,15 +220,17 @@ playingContainer.classList.remove("hide");
     }
     console.log(`answer = ${ans[ind]}`);
     if (select === ans[ind]) {
-      console.log("Your answer is correct");
+      // console.log("Your answer is correct");
       score++;
     } else {
-      console.log("You give a wrong answer");
+      // console.log("You give a wrong answer");
       wrong++;
     }
-
-    console.log(`cprrect ans = ${score}`);
-    console.log(`wrong ans = ${wrong}`);
+    // console.log(`cprrect ans = ${score}`);
+    // console.log(`wrong ans = ${wrong}`);
+    correctAns.innerHTML = score;
+    wrongAns.innerHTML = wrong;
+    totalScore.innerHTML = score - wrong;
   }
 }
 
