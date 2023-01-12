@@ -5,10 +5,14 @@
 }
 
 .container {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   background-color: aquamarine;
   max-width: 100%;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .addingQuestion {
@@ -26,21 +30,66 @@
   border-radius: 10px;
 }
 
-.addingQuestion .frm{
+.addingQuestion .frm {
   width: 90%;
 }
 
-.inp{
+.inp {
   width: 85%;
   margin: 0px auto;
 }
 
 .Button {
   text-align: center;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+.btna {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #220635;
+  height: 40px;
+  width: 122px;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+.Button .btna {
+  margin: 2px auto;
+}
+
+.btna:hover {
+  background-color: #170e1d;
+  color: white;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.btna:active {
+  transform: scale(0.98);
+}
+
+.playingContainer{
+  border: 1px solid black;
+  background-color: red;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+
 .playingPart {
-  width: 35rem;
+  border: 1px solid black;
+  width: 65%;
   box-shadow: 0px 0px 5px grey;
   display: flex;
   background-color: white;
@@ -48,13 +97,18 @@
   overflow: hidden;
   flex-direction: column;
   margin: 0px auto;
-  
+  border: 1px solid black;
 }
 
 .col {
-  text-align: justify;
+  text-align: center;
   padding: 15px;
   width: 95%;
+}
+
+label{
+  cursor: pointer;
+  font-size: 18px;
 }
 
 #next,
@@ -85,7 +139,65 @@
   background-color: rgb(42, 98, 9);
 }
 
+.right{
+  border: 1px solid black;
+  background-color: pink;
+  width: 34%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  position: relative;
+}
+
+.restart{
+  margin: 0;
+  position: absolute;
+  top: 80px;
+  left: 88px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #220635;
+  height: 42px;
+  width: 122px;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.restart:hover{
+  background-color: #170e1d;
+  color: white;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+
+.restart:active{
+  transform: scale(.98);
+}
+
+.number{
+  position: relative
+}
+.number::before{
+  content: '';
+  position: absolute;
+  left: -6px;
+  bottom: 41px;
+  width: 254px;
+  height: 5px;
+  background-color: red;
+}
+
 .box {
   box-shadow: 0px -1px 1px grey;
   width: 100%;
+}
+
+.hide{
+  display: none;
 }

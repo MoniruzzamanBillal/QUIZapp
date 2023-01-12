@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz app</title>
+  <title>Main Quiz app</title>
 
   <!-- bootstrap css  -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -19,13 +19,18 @@
 
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
+  <link rel="icon" href="icon.ico">
 
 </head>
 
 <body>
 
   <div class="container">
-    <div class="addingQuestion">
+    <div class="reset">
+      <button type="button" class="btna  clear">Reset</button>
+    </div>
+
+    <div class="addingQuestion ">
       <form class="frm">
         <div class="row mb-3">
           <label for="question" class="col-sm-2 col-form-label lb">Question:</label>
@@ -33,7 +38,7 @@
             <input type="text" class="form-control inp" id="question">
           </div>
         </div>
-        <div class="row mb-3">
+        <div class="row mb-1">
 
           <label for="option" class="col-sm-2 col-form-label lb">option1:</label>
           <div class="col-sm-10 ">
@@ -64,41 +69,55 @@
         </div>
 
         <div class="Button">
-          <button type="button" class="btn btn-primary add">add</button>
-          <button type="button" class="btn btn-secondary clear">clear</button>
-          <button type="button" class="btn btn-success show">show</button>
+          <button type="button" class="btna  add">add</button>
+          <button type="button" class="btna start">Start game</button>
+
         </div>
       </form>
 
     </div>
 
+    <div class="playingContainer ">
+      <div class="playingPart ">
 
-    <div class="playingPart">
+        <div class="col">
+          <h3 id="questionBox">
+            1) Lorem ipsum dolor sit amet, consectetur adipisicing elit Debitis?
+          </h3>
+        </div>
+        <div class="col box">
+          <input name="option" type="radio" id="first" value="a" required>
+          <label for="first">Testing 1</label>
+        </div>
+        <div class="col box">
+          <input name="option" type="radio" id="second" value="b" required>
+          <label for="second">Testing 2</label>
+        </div>
+        <div class="col box">
+          <input name="option" type="radio" id="third" value="c" required>
+          <label for="third">Testing 3</label>
+        </div>
+        <div class="col box">
+          <input name="option" type="radio" id="fourth" value="d" required>
+          <label for="fourth">Testing 4</label>
+        </div>
+        <button id="submit">Submit</button>
+        <button id="next">next</button>
 
-      <div class="col">
-        <h3 id="questionBox">
-          1) Lorem ipsum dolor sit amet, consectetur adipisicing elit Debitis?
-        </h3>
-      </div>
-      <div class="col box">
-        <input name="option" type="radio" id="first" value="a" required>
-        <label for="first">Testing 1</label>
-      </div>
-      <div class="col box">
-        <input name="option" type="radio" id="second" value="b" required>
-        <label for="second">Testing 2</label>
-      </div>
-      <div class="col box">
-        <input name="option" type="radio" id="third" value="c" required>
-        <label for="third">Testing 3</label>
-      </div>
-      <div class="col box">
-        <input name="option" type="radio" id="fourth" value="d" required>
-        <label for="fourth">Testing 4</label>
-      </div>
-      <button id="submit">Submit</button>
-      <button id="next">next</button>
 
+      </div>
+
+      <div class="right">
+        <button class=" restart" id="restart">restart</button>
+
+        <div class="number">
+          <p>Number of question = <span class="qnum">00</span> </p>
+          <h4 class="co"> Correct answer = <span class="correct">00</span> </h4>
+          <h4 class="wro"> wrong answer = <span class="wrong">20</span> </h4>
+          <h3 class="tot"> Total number = <span class="total">50</span> </h3>
+        </div>
+
+      </div>
 
     </div>
 

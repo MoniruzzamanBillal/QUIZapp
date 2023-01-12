@@ -1,3 +1,9 @@
+
+let addingQuestion = document.querySelector(".addingQuestion");
+let playingContainer = document.querySelector(".playingContainer");
+
+playingContainer.classList.add("hide")
+
 // question adding part starts
 
 let question = document.getElementById("question");
@@ -16,6 +22,8 @@ let wrong = 0;
 add.addEventListener("click", update);
 
 clear.addEventListener("click", () => {
+  playingContainer.classList.add("hide");
+  addingQuestion
   localStorage.clear();
   question.value = "";
   answer.value = "";
@@ -110,13 +118,19 @@ function answerf() {
 
 let submit = document.getElementById("submit");
 let next = document.getElementById("next");
-let sw = document.querySelector(".show");
+let start = document.querySelector(".start");
 let questionBox = document.getElementById("questionBox");
 let allInputs = document.querySelectorAll("input[type='radio']");
 
-sw.addEventListener("click", show);
+start.addEventListener("click", show);
+
+
 
 function show() {
+
+  addingQuestion.classList.add("hide")
+playingContainer.classList.remove("hide");
+
   submit.addEventListener("click", checkAns);
 
   let qson = localStorage.getItem("que");
@@ -143,12 +157,13 @@ function show() {
 
   next.addEventListener("click", () => {
     ind++;
-    if (ind > que.length) {
-      ind = que.length;
+    if (ind > que.length - 1) {
+      ind = que.length - 1;
     }
     // console.log(`index = ${ind}`);
     changeQuestion(ind);
     chengeOption(ind);
+    resetCheck();
   });
 
   function changeQuestion(index) {
@@ -165,7 +180,6 @@ function show() {
 
   function checkAns() {
     let select = getAns();
-    // console.log(select);
     console.log(`select = ${select}`);
 
     let an = localStorage.getItem("answer");
@@ -201,4 +215,12 @@ function getAns() {
     }
   });
   return ans;
+}
+
+function resetCheck() {
+  allInputs.forEach((ele) => {
+    if (ele.checked) {
+      ele.checked = false;
+    }
+  });
 }
